@@ -1,0 +1,27 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>
+      Mapas with MapBox
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+<ion-grid>
+  <ion-row>
+    <ion-col offset="4" size="4">
+        <ion-searchbar debounce="750" (ionChange)="search($event)" [value]="selectedAddress"></ion-searchbar>
+        <div style="position: absolute; width: auto; z-index: 999;">
+        <ion-list lines="none" *ngIf="addresses.length > 0">
+          <ion-item debounce="750" button *ngFor="let item of addresses" (click)="onSelect(item)">
+            <ion-icon name="pin"></ion-icon>
+            {{item.place_name}}
+          </ion-item>
+        </ion-list>
+        <div id="map" ></div>
+        <ion-button (click)="removeMarker()">btn</ion-button>
+      </div>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+</ion-content>
