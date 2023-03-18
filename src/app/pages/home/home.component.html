@@ -1,45 +1,288 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-slides (ionSlideDidChange)="slideChanged()">
-      <ion-slide>
-        <ion-img src="../../../assets/banner/tupiza1.jpg" style="opacity: 0.5;" ></ion-img>
-        <h1 style="position: absolute; float: left; color: crimson;">Hola estimado amigo,<br>
-          LE HABLA HERNAN SU GUIA Y CHOFER INDEPENDIENTE
-          <h2 style="color: navy;">Bienvenido a su asistente de turismo semi automatico</h2>
-
-          <a href="https://wa.me/59169616159">Whatsapp</a>
-        </h1>
-      </ion-slide>
-      <ion-slide>
-        <img alt="Silhouette of mountains" src="../../../assets/banner/tupiza2.jpg" />
-      </ion-slide>
-      <ion-slide>
-        <img alt="Silhouette of mountains" src="../../../assets/banner/tupiza3.jpg" />
-      </ion-slide>
-      <ion-slide>
-        <img alt="Silhouette of mountains" src="../../../assets/banner/tupiza4.jpg" />
-      </ion-slide>
-      <ion-slide>
-        <img alt="Silhouette of mountains" src="../../../assets/banner/tupiza5.jpg" />
-      </ion-slide>
-    </ion-slides>
-
-  </ion-toolbar>
+<ion-header>
+  <ion-slides (ionSlideDidChange)="slideChanged()">
+    <ion-slide>
+      <ion-img src="../../../assets/banner/baner-tupiza1.jpeg" style="opacity: 0.5;" ></ion-img>
+      <h1 style="position:absolute; float: left; color: crimson;">
+        <b>
+          BIENVENIDOS<br>
+          <div style="color: navy;">
+            PORTAL DE TOURS-TUPIZA
+          </div>
+        </b>
+      </h1>
+    </ion-slide>
+    <ion-slide>
+      <ion-img  src="../../../assets/banner/baner-tupiza2.jpeg" style="opacity: 0.5;"></ion-img>
+    </ion-slide>
+    <ion-slide>
+      <ion-img  src="../../../assets/banner/tupiza3.jpg"></ion-img>
+    </ion-slide>
+  </ion-slides>
 </ion-header>
-<!-- home.page.html -->
 <ion-content>
-  <!--ion-spinner></ion-spinner-->
-
-  <ion-card>
-    <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" />
+  <ion-card >
     <ion-card-header>
-      <ion-card-title>Card Title</ion-card-title>
-      <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+      <ion-title>Inicio</ion-title>
     </ion-card-header>
-
     <ion-card-content>
-      Here's a small text description for the card content. Nothing more, nothing less.
+      HOLA AMIGOS, ME DIRIJO A USTEDES PARA INVITARLES. SOY HERNAN F.V. SOY CHOFER GUIA DE TOUR, DESDE EL AÑO 2005
+      CON BASE EN TUPIZA - BOLIVIA
+      <br>
+      <ion-label>
+        Trabajo con la Operadora de turismo <b>"TUPIZAECO TRAVEL"</b>
+      </ion-label>
+    <a href="https://wa.me/59173325333">
+      <!--ion-img style="width: 20px; height: 20px;" src="../../../assets/social_network/whatsapp.png"></ion-img-->
+      <b>Whatsapp</b>
+    </a>
+      <ion-menu-button></ion-menu-button>
+
     </ion-card-content>
   </ion-card>
+  <!--ion-spinner></ion-spinner-->
+  <ion-row center>
+    <ion-col width-50 center>
+      <ion-label class="text-center">LUGARES DE CONCURRENCIA</ion-label>
+      <ion-slides class="ion-magin-top" [options]="option" (ionSlideDidChange)="slideChanged()">
+        <ion-slide>
+          <ion-card>
+            <ion-img  src="../../../assets/banner/tupiza2.jpg" style="opacity: 0.5;"></ion-img>
+          </ion-card>
+        </ion-slide>
+        <ion-slide>
+          <ion-card>
+            <ion-img  src="../../../assets/banner/tupiza3.jpg" style="opacity: 0.5;"></ion-img>
+          </ion-card>
+        </ion-slide>
+        <ion-slide>
+          <ion-card>
+            <ion-img src="../../../assets/images/uyuni/laguna-negra.jpeg" style="opacity: 0.5;" ></ion-img>
+          </ion-card>
+        </ion-slide>
+      </ion-slides>
+    </ion-col>
+  </ion-row>
+
+
+  <ion-grid>
+    <ion-row center>
+      <ion-col size="6">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title><b>Tupiza</b></ion-card-title>
+            <ion-card-subtitle>Laguna Colorada | Laguna Verde | Laguna Edionda | </ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <b>Tupiza</b> ciudad y municipio al sud de Bolivia, capital de la Provincia Sud Chichas en el departamento de Potosí.<br>
+            <b>Principal Actividad Económica</b> agricola, comercio, explotacion de minas y canteras/
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col center size="6">
+        <ion-card>
+          <ion-slides class="ion-magin-top" [options]="option" (ionSlideDidChange)="slideChanged()">
+            <ion-slide>
+              <ion-card>
+                <ion-img src="../../../assets/images/tupiza/tupiza-vallemachos1.jpg" style="opacity: 0.75;" ></ion-img>
+              </ion-card>
+            </ion-slide>
+            <ion-slide>
+              <ion-card>
+                <ion-img src="../../../assets/images/tupiza/tupiza-vallemachos2.jpg" style="opacity: 0.75;" ></ion-img>
+              </ion-card>
+            </ion-slide>
+            <ion-slide>
+              <ion-card>
+                <ion-img src="../../../assets/images/tupiza/tupiza-vallemachos3.jpg" style="opacity: 0.75;" ></ion-img>
+              </ion-card>
+            </ion-slide>
+            <ion-slide>
+              <ion-card>
+                <ion-img src="../../../assets/images/tupiza/tupiza-vallemachos4.jpg" style="opacity: 0.75;" ></ion-img>
+              </ion-card>
+            </ion-slide>
+            <ion-slide>
+              <ion-card>
+                <ion-img src="../../../assets/images/tupiza/tupiza-vallemachos5.jpg" style="opacity: 0.75;" ></ion-img>
+              </ion-card>
+            </ion-slide>
+          </ion-slides>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid>
+    <ion-row center>
+      <ion-col center size="6">
+        <ion-card>
+          <ion-slides class="ion-magin-top" [options]="option" (ionSlideDidChange)="slideChanged()">
+            <ion-slide>
+              <ion-card>
+                <ion-img src="../../../assets/images/uyuni/uyuni-salar.jpeg" style="opacity: 0.75;" ></ion-img>
+              </ion-card>
+            </ion-slide>
+            <ion-slide>
+              <ion-card>
+                <ion-img src="../../../assets/images/uyuni/laguna-edionda.jpeg" style="opacity: 0.75;" ></ion-img>
+              </ion-card>
+            </ion-slide>
+            <ion-slide>
+              <ion-card>
+                <ion-img src="../../../assets/images/uyuni/laguna-negra.jpeg" style="opacity: 0.75;" ></ion-img>
+              </ion-card>
+            </ion-slide>
+            <ion-slide>
+              <ion-card>
+                <ion-img src="../../../assets/images/uyuni/Laguna_Roja_2.jpg" style="opacity: 0.75;" ></ion-img>
+              </ion-card>
+            </ion-slide>
+            <ion-slide>
+              <ion-card>
+                <ion-img src="../../../assets/images/uyuni/polques-aguas-termales.jpeg" style="opacity: 0.75;" ></ion-img>
+              </ion-card>
+            </ion-slide>
+          </ion-slides>
+        </ion-card>
+      </ion-col>
+      <ion-col size="6">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title><b>UYUNI</b></ion-card-title>
+            <ion-card-subtitle>Laguna Colorada | Laguna Verde | Laguna Edionda | </ion-card-subtitle>
+          </ion-card-header>
+
+          <ion-card-content>
+            Here's a small text description for the card content. Nothing more, nothing less.
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <!----->
+  <ion-grid>
+    <ion-row center>
+      <ion-col width-100 center size="5">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>Card Title</ion-card-title>
+            <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+          </ion-card-header>
+
+          <ion-card-content>
+            Here's a small text description for the card content. Nothing more, nothing less.
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col size="7">
+        <ion-card>
+          <ion-slides class="ion-magin-top" [options]="option" (ionSlideDidChange)="slideChanged()">
+            <ion-slide>
+              <ion-card>
+                <ion-img src="../../../assets/images/uyuni/Laguna_Roja_2.jpg" style="opacity: 0.75;" ></ion-img>
+              </ion-card>
+            </ion-slide>
+            <ion-slide>
+              <ion-card>
+                <ion-img  src="../../../assets/banner/tupiza2.jpg"></ion-img>
+              </ion-card>
+            </ion-slide>
+            <ion-slide>
+              <ion-card>
+                <ion-img  src="../../../assets/banner/tupiza3.jpg"></ion-img>
+              </ion-card>
+            </ion-slide>
+            <ion-slide>
+              <ion-card>
+                <ion-img  src="../../../assets/banner/tupiza4.jpg"></ion-img>
+              </ion-card>
+            </ion-slide>
+            <ion-slide>
+              <ion-card>
+                <ion-img  src="../../../assets/banner/tupiza5.jpg"></ion-img>
+              </ion-card>
+            </ion-slide>
+          </ion-slides>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <!----->
+  <ion-grid>
+    <ion-row>
+      <ion-col size="4">
+        <ion-card>
+          <ion-slides class="ion-magin-top" [options]="option" (ionSlideDidChange)="slideChanged()">
+            <ion-slide>
+              <ion-card>
+                <ion-img src="../../../assets/images/uyuni/uyuni-salar.jpeg" style="opacity: 0.75;" ></ion-img>
+              </ion-card>
+            </ion-slide>
+            <ion-slide>
+              <ion-card>
+                <ion-img  src="../../../assets/banner/tupiza2.jpg"></ion-img>
+              </ion-card>
+            </ion-slide>
+            <ion-slide>
+              <ion-card>
+                <ion-img  src="../../../assets/banner/tupiza3.jpg"></ion-img>
+              </ion-card>
+            </ion-slide>
+            <ion-slide>
+              <ion-card>
+                <ion-img  src="../../../assets/banner/tupiza4.jpg"></ion-img>
+              </ion-card>
+            </ion-slide>
+            <ion-slide>
+              <ion-card>
+                <ion-img  src="../../../assets/banner/tupiza5.jpg"></ion-img>
+              </ion-card>
+            </ion-slide>
+          </ion-slides>
+        </ion-card>
+      </ion-col>
+      <ion-col size="4">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>TUPIZA</ion-card-title>
+            <ion-card-subtitle>Canon del duende | Valle de los machos | Puerta del diablo | puerta del diablo</ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            Here's a small text description for the card content. Nothing more, nothing less.
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col size="4">
+        <ion-card>
+          <ion-slides class="ion-magin-top" [options]="option" (ionSlideDidChange)="slideChanged()">
+            <ion-slide>
+              <ion-card>
+                <ion-img src="../../../assets/images/tupiza/tupiza-plaza.jpg" style="opacity: 0.5;" ></ion-img>
+              </ion-card>
+            </ion-slide>
+            <ion-slide>
+              <ion-card>
+                <ion-img  src="../../../assets/images/tupiza/tupiza-vallemachos1.jpg"></ion-img>
+              </ion-card>
+            </ion-slide>
+            <ion-slide>
+              <ion-card>
+                <ion-img  src="../../../assets/images/tupiza-vallemachos2.jpg"></ion-img>
+              </ion-card>
+            </ion-slide>
+            <ion-slide>
+              <ion-card>
+                <ion-img  src="../../../assets/images/tupiza-vallemachos3.jpg"></ion-img>
+              </ion-card>
+            </ion-slide>
+            <ion-slide>
+              <ion-card>
+                <ion-img  src="../../../assets/images/tupiza-vallemachos4.jpg"></ion-img>
+              </ion-card>
+            </ion-slide>
+          </ion-slides>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
 

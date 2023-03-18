@@ -49,19 +49,23 @@ export class MapaComponent implements AfterViewInit {
         container: 'map',
         style: 'mapbox://styles/mapbox/streets-v12',
         center: [lng, lat],
-        zoom: 12.5
+        //inf: 45,
+        zoom: 13.5
       });
-      //this.createMarker(lng, lat);
+      this.createMarker(lng, lat);
     } else {
       console.log('aun no existe un mapa')
       this.mapa.setCenter([1, lat])
     }
     console.log(this.mapa)
   }
-  /*createMarker(lng: number, lat: number) {
-    const marker = new mapboxgl.Marker({draggable: true}).setLngLat([lng, lat]).addTo(this.mapa);
+  createMarker(lng: number, lat: number) {
+    const marker = new mapboxgl.Marker({draggable: true})
+                    .setLngLat([lng, lat])
+                    .setRotation(45)
+                    .addTo(this.mapa);
     marker.on('drag', () => {console.log('8****', marker.getLngLat())});
-  }*/
+  }
   removeMarker() {
 
   }

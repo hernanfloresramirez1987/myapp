@@ -7,6 +7,12 @@ import { IonSlides } from '@ionic/angular';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
+  option = {
+    slidesPreview: 1.5,
+    centeredSlides: true,
+    loop: true,
+    spaceBetween: 10
+  }
   @ViewChild(IonSlides) slides!: IonSlides;
   slideChanged() {
     let currentIndex = this.slides.getActiveIndex();
