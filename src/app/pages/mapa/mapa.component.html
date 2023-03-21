@@ -18,7 +18,11 @@
         {{item.place_name}}
       </ion-item>
     </ion-list>
-    <div id="map" ></div>
-    <ion-button (click)="removeMarker()">btn</ion-button>
+
+
+    <div id="geocoder" #asGeoCoder class="geocoder"></div>
+
+    <div id="map" #asMap class="map-container"></div>
+    <ion-button (click)="drawRoutes()">btn</ion-button>
   </div>
 </ion-content>

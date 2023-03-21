@@ -1,3 +1,61 @@
+page-home {
+
+  .bg{
+    background: linear-gradient(to bottom, #00A399 0%, #fafafa 400%);
+  }
+
+  .bg-ions{
+    background:#000;
+    opacity:0.2;
+  }
+
+  .btn{
+    background:#000;
+    opacity:0.2;
+    color:white;
+  }
+
+  ion-input{
+    color:#FAFAFA;
+  }
+
+  ion-textarea{
+    color:#FAFAFA;
+  }
+
+  ion-card{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  ion-card-content{
+    margin-left:-2%;
+  }
+
+  ion-item{
+    width:50%;
+  }
+
+  .summ{
+    color:#000;
+  }
+
+  ::placeholder {
+    color: white;
+    opacity: 1; /* Firefox */
+  }
+
+  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: white;
+  }
+
+  ::-ms-input-placeholder { /* Microsoft Edge */
+    color: white;
+  }
+
+}
+
 ion-card {
   width: 100%;
   height: 160px;
@@ -18,4 +76,22 @@ ion-card {
 
 .swiper-slide {
   transition: 400ms all ease-in-out;
+}
+///////
+///
+
+
+
+ion-item {
+  --padding-start: 0;
+}
+
+/* iOS places the subtitle above the title */
+ion-card-header.ios {
+  display: flex;
+  flex-flow: column-reverse;
+}
+
+ion-content.background{
+  --background: url("../../../assets/images/tupiza/tupiza-transparente-puerta.png") 0 0/100% 100% no-repeat;
 }
