@@ -10,6 +10,7 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <ion-label>por api</ion-label>
   <ion-searchbar debounce="750" (ionChange)="search($event)" [value]="selectedAddress"></ion-searchbar>
   <div>
     <ion-list lines="none" *ngIf="addresses.length > 0">
@@ -19,10 +20,21 @@
       </ion-item>
     </ion-list>
 
-
+    <ion-label>por complemento deocoder</ion-label>
     <div id="geocoder" #asGeoCoder class="geocoder"></div>
 
+    <div [ngClass]="{'active-way': modeInput === 'start'}">
+      <div class="mock-label">Inicio</div>
+      <div class="mock-input"> Ruta</div>
+    </div>
+    <div [ngClass]="{'active-way': modeInput === 'end'}">
+      <div class="mock-label">Fin</div>
+      <div class="mock-input"> Ruta</div>
+    </div>
+
+
     <div id="map" #asMap class="map-container"></div>
-    <ion-button (click)="drawRoutes()">btn</ion-button>
+    <!--ion-button (click)="drawRoutes()">btn</ion-button-->
+    <ion-button >btn</ion-button>
   </div>
 </ion-content>

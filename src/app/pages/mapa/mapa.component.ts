@@ -1,9 +1,11 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import * as mapboxgl from 'mapbox-gl';
 import { NavigationControl, Marker, Map, Popup, GeoJSONSource } from 'mapbox-gl';
 import { Feature, MapaService } from 'src/app/services/mapa.service';
 import { Geolocation } from '@capacitor/geolocation';
 import { environment } from 'src/environments/environment.prod';
+import { map } from 'rxjs';
+import { Waypoints } from './waypoints';
 //import { DirectionsService } from '@mapbox/mapbox-sdk/services/directions';
 
 @Component({
@@ -12,26 +14,32 @@ import { environment } from 'src/environments/environment.prod';
   styleUrls: ['./mapa.component.scss']
 })
 export class MapaComponent implements OnInit {
-  mapa!: Map;
-  //directions!: DirectionsService;
-  marker!: Marker;
   addresses: Feature[] = [];
   selectedAddress = null;
-  popupUbicacion = new Popup().setHTML('Estoy aqui')
+  @ViewChild('asGeoCoder') asGeoCoder!: ElementRef;
+  modeInput = 'start';
+  wayPoints: Waypoints = { start: null, end: null };
 
-  nav = new NavigationControl();
-
-  constructor(private mapboxServ: MapaService) {}
+  constructor(private mapboxServ: MapaService, private render2: Renderer2) {}
 
   ngOnInit(): void {
     this.locate();
-    this.searchDirections();
   }
   async locate() {
     const coordinates = await Geolocation.getCurrentPosition();
     console.log('Current position:', coordinates);
-    //this.drawMap(coordinates.coords.longitude, coordinates.coords.latitude);
-    this.mapboxServ.buildMap();
+    this.mapboxServ
+      .buildMap()
+      .then(({geocoder, mapa}) => {
+        console.log(geocoder, mapa)
+        this.render2.appendChild(
+          this.asGeoCoder.nativeElement,
+          geocoder.onAdd(mapa)
+        );
+      })
+      .catch((e) => {
+        console.log(e)
+      })
   }
   search(event: any) {
     const searchTerm = event.target.value.toLowerCase();
@@ -49,13 +57,12 @@ export class MapaComponent implements OnInit {
   onSelect(address: Feature) { //this.selectedAddress = address;
     this.addresses = [];
     console.log('///////////', address.center)
-    //this.drawMap(address.center[0], address.center[1])
     this.mapboxServ.addMarker(address.center[0], address.center[1])
   }
   removeMarker() {
 
   }
-  drawRoutes() {
+  /*drawRoutes() {
     console.log("Hola mundo")
     this.mapa.addLayer({
       id: 'ruta',
@@ -84,7 +91,7 @@ export class MapaComponent implements OnInit {
         'line-width': 8
       }
     });
-  }
+  }*/
   searchDirections() {
     //this.mapa.addControl(this.nav, 'top-right');
     const startMarker = new Marker({ color: 'red' });
@@ -92,15 +99,15 @@ export class MapaComponent implements OnInit {
 
     // Agregar marcadores a las coordenadas de inicio y fin
     startMarker.setLngLat([-65.7160422117201, -21.445767101120342]);
-    startMarker.addTo(this.mapa);
+    //startMarker.addTo(this.mapa);
 
     endMarker.setLngLat([-65.71865894979871, -21.444416598540272]);
-    endMarker.addTo(this.mapa);
+    //endMarker.addTo(this.mapa);
     //this.mapa.addControl(new DirectionsService, )
 
   }
 
-  getDirections() {
+  /*getDirections() {
     const origin = [-74.5, 40]; // Ejemplo origen
     const destination = [-73.9, 40.7]; // Ejemplo destino
 
@@ -115,5 +122,5 @@ export class MapaComponent implements OnInit {
     endMarker.setLngLat([-74.5, 40.5]);
     endMarker.addTo(this.mapa);
 
-  }
+  }*/
 }

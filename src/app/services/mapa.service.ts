@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { ElementRef, Injectable, ViewChild } from '@angular/core';
 import { map } from 'rxjs';
 import { environment } from 'src/environments/environment.prod';
 
@@ -31,7 +31,6 @@ export class MapaService {
   lat = -21.44;
   lng = -65.71;
   zoom = 11;
-
   popupUbicacion = new Popup().setHTML('Estoy aqui')
 
   constructor(private http: HttpClient) {
@@ -49,17 +48,24 @@ export class MapaService {
           center: [ this.lng, this.lat ]
         });
         this.mapa.addControl(new mapboxgl.NavigationControl)
-        this.addMarker(this.lng, this.lat);
-
+       // this.addMarker(this.lng, this.lat);
 
         const geocoder = new MapboxGeocoder({
           accessToken: mapboxgl.accessToken,
-          mapboxgl: mapboxgl
+          mapboxgl,
         });
-        this.mapa.addControl(geocoder);
+
+        geocoder.on('result',($event => {
+          const { result } = $event;
+
+          this.addMarker(result.center[0], result.center[1]);
+          //geocoder.clear();
+          console.log('****: ', result.center);
+        }))
 
         resolve({
-          map: this.mapa
+          map: this.mapa,
+          geocoder
         });
       } catch(e) {
         console.log(e);
@@ -74,6 +80,9 @@ export class MapaService {
                     .setRotation(45)
                     .setPopup(this.popupUbicacion)
                     .addTo(this.mapa);
+    marker.on('drag', () => {
+      console.log('linea 67./****: ', marker.getLngLat());
+    });
     this.mapa.setCenter([lng, lat]);
   }
 
@@ -88,7 +97,11 @@ export class MapaService {
 
   searchProximity(lngIni: number, latIni: number, lngFin: number, latFin: number, params: string) {
     //const _url = `${this.url}mapboxPK/${params}.json?proximity=${lng},${lat}&access_token=${environment.mapboxPK}`;
-    const _url = `${this.url}directions/v5/mapbox/cycling/${lngIni},${latIni},${lngFin},${latFin}?steps=true&geometries=geojson&access_token=${environment.mapboxPK}`;
+    const _url = [
+                  `${this.url}directions/v5/mapbox/driving/`,
+                  `${lngIni},${latIni},${lngFin},${latFin}`,
+                  `?steps=true&geometries=geojson&access_token=${environment.mapboxPK}`
+                ].join('');
     console.log('URL: ', _url);
     return this.http.get(_url)
       .pipe(map((res: MapboxOutput) => {
